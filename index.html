@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mari Haddad Patisserie</title>
+<meta name="description" content="Panelinhas de cookie e brigadeiro, cookies recheados, caixas de brigadeiro e tortas, feitos no dia e sem conservantes. Encomendas pelo WhatsApp, retirada nos Jardins, São Paulo.">
+<meta property="og:title" content="Mari Haddad Patisserie">
+<meta property="og:description" content="Feito no dia, servido na panela. Encomendas pelo WhatsApp.">
+<meta property="og:image" content="img/torta-cookie.jpg">
+<meta name="theme-color" content="#2A1C15">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23C6926B'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-style='italic' font-size='26' text-anchor='middle' fill='%23FFFBF5'%3EMH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&amp;family=Jost:wght@300;400;500&amp;display=swap">
+<style>
+:root {
+  /* Cardápio de maison: logotipo centrado, hero em arco, intervalo escuro do best seller, preços com pontilhado de menu */
+  --papel: #F7F0E6;
+  --leite: #FFFBF5;
+  --cacau: #2A1C15;
+  --caramelo: #C6926B;
+  --caramelo-tinta: #8A5534;
+  --pistache: #DCDDC3;
+  --linha: color-mix(in srgb, var(--cacau) 16%, transparent);
+  --suave: color-mix(in srgb, var(--cacau) 74%, var(--papel));
+  --display: "Bodoni Moda", "Bodoni 72", Didot, "Times New Roman", serif;
+  --texto: "Jost", "Futura", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --largura: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body {
+  margin: 0; background: var(--papel); color: var(--cacau);
+  font-family: var(--texto); font-weight: 300; font-size: 1.0625rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--caramelo-tinta); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.02; letter-spacing: -0.01em; }
+h2 em, h1 em { color: var(--caramelo-tinta); }
+h3 { font-size: 1.6rem; line-height: 1.15; }
+p { margin: 0; }
+.envelope { max-width: var(--largura); margin: 0 auto; padding-inline: var(--gutter); }
+.sobre {
+  font-size: 0.74rem; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 400;
+  color: var(--caramelo-tinta); margin-bottom: 1.1rem;
+}
+
+/* Aviso e cabeçalho */
+.aviso {
+  background: var(--cacau); color: var(--papel); text-align: center;
+  font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 400;
+  padding: 0.6rem var(--gutter);
+}
+.cabecalho {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--papel) 93%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linha);
+}
+.cabecalho-inner {
+  max-width: var(--largura); margin: 0 auto; padding: 0.95rem var(--gutter);
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
+}
+.nav { display: flex; gap: 1.6rem; align-items: center; }
+.nav a, .nav-movel a {
+  font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400;
+  text-decoration: none; white-space: nowrap;
+}
+.nav a:hover, .nav-movel a:hover { color: var(--caramelo-tinta); }
+.nav-dir { justify-content: flex-end; }
+.marca { text-align: center; text-decoration: none; display: block; }
+.marca-nome { display: block; font-weight: 300; font-size: 1.6rem; letter-spacing: 0.05em; line-height: 1; }
+.marca-sub {
+  display: block; font-weight: 400; font-size: 0.6rem; letter-spacing: 0.7em; padding-left: 0.7em;
+  margin-top: 0.4rem; color: var(--caramelo-tinta);
+}
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  background: var(--cacau); color: var(--papel); text-decoration: none;
+  font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400;
+  padding: 0.95rem 1.6rem; border-radius: 999px; transition: background .3s ease, color .3s ease;
+}
+.botao:hover { background: var(--caramelo-tinta); }
+.nav .botao { padding: 0.7rem 1.2rem; }
+.nav-movel { display: none; }
+.flutuante { display: none; }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center;
+  padding-block: clamp(3rem, 7vw, 6.5rem);
+}
+h1 {
+  font-size: clamp(3.1rem, 7.4vw, 6.6rem); line-height: 0.98; letter-spacing: -0.02em;
+}
+h1 em { display: block; }
+.lead { font-size: 1.2rem; max-width: 34rem; margin-top: 1.8rem; color: var(--suave); }
+.acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 2rem; margin-top: 2.4rem; }
+.link-seta {
+  font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400;
+  text-decoration: none; border-bottom: 1px solid var(--caramelo); padding-bottom: 3px;
+}
+.hero-foto { position: relative; justify-self: end; width: 100%; max-width: 440px; }
+.hero-foto::before {
+  content: ""; position: absolute; inset: 0; transform: translate(-18px, -18px);
+  border: 1px solid var(--caramelo); border-radius: 50% 50% 0 0 / 37.5% 37.5% 0 0; pointer-events: none;
+}
+.arco {
+  position: relative; z-index: 1; aspect-ratio: 3 / 4; overflow: hidden;
+  border-radius: 50% 50% 0 0 / 37.5% 37.5% 0 0; margin: 0;
+}
+.arco img { width: 100%; height: 100%; object-fit: cover; }
+.selo { position: absolute; z-index: 2; width: 136px; left: -62px; bottom: 56px; overflow: visible; }
+.selo-fundo { fill: var(--caramelo); }
+.selo-anel { transform-origin: 100px 100px; animation: girar 40s linear infinite; }
+.selo-anel text { fill: var(--leite); font-family: var(--texto); font-size: 13px; font-weight: 400; }
+.selo-mh { fill: var(--leite); font-family: var(--display); font-style: italic; font-size: 40px; }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* Best seller */
+.destaque { background: var(--cacau); color: var(--papel); }
+.destaque-inner {
+  display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+.prato {
+  margin: 0; border-radius: 50%; overflow: hidden; aspect-ratio: 1;
+  box-shadow: 0 0 0 16px var(--cacau), 0 0 0 17px var(--caramelo);
+  max-width: 500px; width: 100%; justify-self: center;
+}
+.prato img { width: 100%; height: 100%; object-fit: cover; }
+.destaque .sobre { color: var(--caramelo); }
+.destaque h2 { font-size: clamp(3rem, 6vw, 4.6rem); }
+.destaque h2 em { display: block; color: var(--caramelo); font-size: clamp(4.4rem, 11vw, 9.5rem); line-height: 0.9; letter-spacing: -0.03em; }
+.destaque p { font-size: 1.15rem; max-width: 30rem; margin-top: 1.6rem; color: color-mix(in srgb, var(--papel) 82%, var(--cacau)); }
+.destaque .menu { max-width: 26rem; margin-top: 1.6rem; }
+.destaque .pontos { border-color: var(--caramelo); }
+.destaque .botao { background: var(--caramelo); color: var(--cacau); margin-top: 2.2rem; }
+.destaque .botao:hover { background: var(--papel); }
+
+/* Seções */
+.secao { padding-block: clamp(4rem, 8vw, 7rem); }
+.secao-cab {
+  display: grid; grid-template-columns: 1fr minmax(0, 30rem); gap: 1.5rem 3rem; align-items: end;
+  padding-bottom: 1.8rem; margin-bottom: 3rem; border-bottom: 1px solid var(--linha);
+}
+.secao-cab p { color: var(--suave); }
+
+/* Menu com pontilhado */
+.menu { margin: 0; display: grid; gap: 0.15rem; }
+.linha { display: flex; align-items: baseline; gap: 0.6rem; }
+.menu .linha { padding-block: 0.3rem; }
+.menu dt { font-weight: 400; }
+.nota { font-weight: 300; color: var(--suave); }
+.destaque .nota { color: inherit; }
+.pontos { flex: 1; min-width: 1.5rem; border-bottom: 1px dotted var(--caramelo-tinta); transform: translateY(-0.3em); }
+.menu dd, .preco { margin: 0; font-weight: 400; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+
+/* Panelinhas */
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 3rem 2rem; }
+.item { display: flex; flex-direction: column; gap: 0.7rem; }
+.item figure { margin: 0 0 0.5rem; aspect-ratio: 1; background: var(--leite); overflow: hidden; }
+.item figure img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; transition: transform .7s ease; }
+.item:hover figure img { transform: scale(1.04); }
+.desc { font-size: 0.97rem; color: var(--suave); }
+.item-pe { margin-top: auto; display: grid; gap: 1rem; padding-top: 0.4rem; }
+.pedir {
+  justify-self: start; align-self: start; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+  color: var(--caramelo-tinta); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px;
+}
+.pedir:hover { color: var(--cacau); }
+
+/* Cookies */
+.cookies-sec { background: var(--leite); }
+.cookies { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.6rem 4rem; }
+.cookie { display: grid; grid-template-columns: 96px 1fr; gap: 1.4rem; align-items: start; }
+.mini { width: 96px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 48px 48px 0 0; }
+.cookie-texto { display: grid; gap: 0.5rem; }
+.cookie-linha h3 { font-size: 1.45rem; }
+.cookie-texto p { font-size: 0.97rem; color: var(--suave); }
+
+/* Brigadeiros */
+.brig { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+.colagem { position: relative; padding-bottom: 18%; margin: 0; }
+.colagem .grande { width: 82%; aspect-ratio: 5 / 6; object-fit: cover; }
+.colagem .pequena {
+  position: absolute; right: 0; bottom: 0; width: 42%; aspect-ratio: 3 / 4; object-fit: cover;
+  border: 10px solid var(--papel);
+}
+.blocos { display: grid; gap: 2.6rem; }
+.bloco { display: grid; gap: 0.8rem; padding-bottom: 2.6rem; border-bottom: 1px solid var(--linha); }
+.bloco:last-child { border-bottom: 0; padding-bottom: 0; }
+.bloco p { color: var(--suave); font-size: 0.97rem; }
+.sabores { list-style: none; padding: 0; margin: 0.2rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.sabores li {
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400;
+  border: 1px solid var(--caramelo); color: var(--caramelo-tinta); padding: 0.35rem 0.8rem; border-radius: 999px;
+}
+
+/* Sobremesa */
+.sobremesa-sec { background: var(--pistache); }
+.sobremesa { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+.sobremesa .sobre { color: var(--cacau); }
+.sobremesa p { font-size: 1.1rem; max-width: 30rem; margin-top: 1.4rem; color: color-mix(in srgb, var(--cacau) 80%, var(--pistache)); }
+.sobremesa .menu { max-width: 24rem; margin-top: 1.6rem; }
+.sobremesa .pontos { border-color: var(--cacau); }
+.sobremesa .nota-pe { font-size: 0.9rem; margin-top: 0.8rem; }
+.sobremesa .botao { margin-top: 2rem; }
+.tortas { position: relative; margin: 0; }
+.tortas .inteira { width: 100%; mix-blend-mode: multiply; }
+.tortas .fatia {
+  width: 46%; position: absolute; left: 0; top: -12%; aspect-ratio: 3 / 2; object-fit: cover;
+  border: 10px solid var(--pistache);
+}
+
+/* Como encomendar */
+.passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 3rem; counter-reset: passo; }
+.passos li { counter-increment: passo; display: grid; gap: 0.6rem; }
+.passos li::before {
+  content: counter(passo); font-family: var(--display); font-style: italic; font-size: 3.4rem; line-height: 1;
+  color: var(--caramelo-tinta);
+}
+.passos h3 { font-size: 1.5rem; }
+.passos p { color: var(--suave); font-size: 0.97rem; }
+.infos {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 3rem;
+  margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--linha);
+}
+.infos h3 {
+  font-family: var(--texto); font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+  color: var(--caramelo-tinta); margin-bottom: 0.7rem;
+}
+.infos p { font-size: 0.97rem; color: var(--suave); }
+.chamada {
+  margin-top: 4.5rem; background: var(--leite); border: 1px solid var(--linha);
+  padding: clamp(2rem, 5vw, 3.5rem); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 3rem;
+}
+.chamada h3 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+.chamada h3 em { color: var(--caramelo-tinta); }
+.chamada p { color: var(--suave); margin-top: 0.4rem; font-variant-numeric: tabular-nums; }
+
+/* Friso de grega */
+.grega { position: relative; height: 30px; background: var(--cacau); }
+.grega::before {
+  content: ""; position: absolute; inset: 0; background: var(--caramelo);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='30' viewBox='0 0 24 30'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='square'%3E%3Cpath d='M0 2.5H24M0 27.5H24' stroke-width='1'/%3E%3Cpath d='M0 22H24M5 22V8H19V17H10V12H14' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") repeat-x center / 24px 30px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='30' viewBox='0 0 24 30'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='square'%3E%3Cpath d='M0 2.5H24M0 27.5H24' stroke-width='1'/%3E%3Cpath d='M0 22H24M5 22V8H19V17H10V12H14' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") repeat-x center / 24px 30px;
+}
+
+/* Rodapé */
+.rodape { background: var(--cacau); color: var(--papel); }
+.rodape-corpo { padding-block: 4.5rem 2.5rem; }
+.rodape-inner { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2.5rem; align-items: center; }
+.rodape-col { display: grid; gap: 0.5rem; font-size: 0.95rem; }
+.rodape-col.dir { text-align: right; }
+.rodape-col .rotulo { font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--caramelo); font-weight: 400; }
+.rodape a { text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--caramelo) 60%, transparent); justify-self: start; }
+.rodape-col.dir a { justify-self: end; }
+.brasao { width: 150px; }
+.b-traco { fill: none; stroke: var(--caramelo); stroke-width: 1.3; }
+.b-traco.fino { stroke-width: 0.7; }
+.b-ponto { fill: var(--caramelo); }
+.b-sup { fill: var(--caramelo); font-family: var(--texto); font-size: 9px; letter-spacing: 4px; font-weight: 400; }
+.b-mh { fill: var(--papel); font-family: var(--display); font-style: italic; font-size: 64px; }
+.b-nome { fill: var(--papel); font-family: var(--texto); font-size: 13px; letter-spacing: 2px; font-weight: 300; }
+.copyright {
+  margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--papel) 14%, transparent);
+  font-size: 0.78rem; letter-spacing: 0.08em; color: color-mix(in srgb, var(--papel) 60%, var(--cacau)); text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 960px) {
+  .nav-esq, .nav-dir { display: none; }
+  .cabecalho-inner { grid-template-columns: 1fr; padding-block: 0.8rem 0.5rem; }
+  .marca-nome { font-size: 1.35rem; }
+  .nav-movel {
+    display: flex; gap: 1.4rem; overflow-x: auto; padding: 0.55rem var(--gutter) 0.75rem;
+    scrollbar-width: none; justify-content: safe center;
+  }
+  .nav-movel::-webkit-scrollbar { display: none; }
+  .flutuante {
+    display: inline-flex; position: fixed; z-index: 30; right: 16px; bottom: 16px;
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--cacau) 30%, transparent);
+  }
+  .hero, .destaque-inner, .brig, .sobremesa { grid-template-columns: 1fr; }
+  .hero-foto { justify-self: center; max-width: 340px; margin-top: 1.5rem; }
+  .hero-foto::before { transform: translate(-12px, -12px); }
+  .selo { width: 104px; left: -8px; bottom: 32px; }
+  .secao-cab { grid-template-columns: 1fr; }
+  .cookies { grid-template-columns: 1fr; }
+  .passos, .infos { grid-template-columns: 1fr; }
+  .tortas { margin-top: 3rem; }
+  .rodape-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .rodape-col, .rodape-col.dir { text-align: center; justify-items: center; }
+  .rodape a, .rodape-col.dir a { justify-self: center; }
+}
+@media (max-width: 420px) {
+  .cookie { grid-template-columns: 76px 1fr; gap: 1rem; }
+  .mini { width: 76px; border-radius: 38px 38px 0 0; }
+  .cookie-linha h3 { font-size: 1.3rem; min-width: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .selo-anel { animation: none; }
+  .item figure img { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="aviso">Feito no mesmo dia · Sem conservantes · Retirada nos Jardins</div>
+
+<header class="cabecalho">
+  <div class="cabecalho-inner">
+    <nav class="nav nav-esq" aria-label="Cardápio"><a href="#panelinhas">Panelinhas</a><a href="#cookies">Cookies</a><a href="#brigadeiros">Brigadeiros</a></nav>
+    <a class="marca" href="#inicio" aria-label="Mari Haddad Patisserie, início">
+      <span class="marca-nome">MARI HADDAD</span>
+      <span class="marca-sub">PATISSERIE</span>
+    </a>
+    <div class="nav nav-dir"><a href="#sobremesa">Sobremesa</a><a href="#encomendar">Como encomendar</a><a class="botao" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Encomendar</a></div>
+  </div>
+  <nav class="nav-movel" aria-label="Seções"><a href="#panelinhas">Panelinhas</a><a href="#cookies">Cookies</a><a href="#brigadeiros">Brigadeiros</a><a href="#sobremesa">Sobremesa</a><a href="#encomendar">Como encomendar</a></nav>
+</header>
+
+<main id="inicio">
+
+  <section class="envelope hero">
+    <div>
+      <p class="sobre">Patisserie artesanal · São Paulo</p>
+      <h1>Feito no dia, <em>servido na panela.</em></h1>
+      <p class="lead">Panelinhas de cookie e brigadeiro, cookies recheados e caixas de brigadeiro, preparados no mesmo dia e sem conservantes.</p>
+      <div class="acoes">
+        <a class="botao" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Encomendar pelo WhatsApp</a>
+        <a class="link-seta" href="#panelinhas">Ver as panelinhas</a>
+      </div>
+    </div>
+    <div class="hero-foto">
+      <figure class="arco"><img src="img/lotus-biscoff.jpg" alt="Colherada da panelinha Lotus Biscoff" width="802" height="1100" fetchpriority="high"></figure>
+      <svg class="selo" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="100" class="selo-fundo"/>
+            <defs><path id="anel" d="M100,30 a70,70 0 1,1 -0.01,0"/></defs>
+            <g class="selo-anel"><text><textPath href="#anel" textLength="436" lengthAdjust="spacing">FEITO NO DIA • SEM CONSERVANTES • </textPath></text></g>
+            <text x="100" y="114" text-anchor="middle" class="selo-mh">MH</text>
+          </svg>
+    </div>
+  </section>
+
+  <section class="destaque" id="best-seller" aria-labelledby="t-best">
+    <div class="grega" aria-hidden="true"></div>
+    <div class="envelope destaque-inner">
+      <figure class="prato"><img src="img/torta-cookie.jpg" alt="Torta Cookie vista de cima, coberta de gotas de chocolate" width="900" height="900" loading="lazy"></figure>
+      <div>
+        <p class="sobre">Best seller</p>
+        <h2 id="t-best">Torta <em>Cookie</em></h2>
+        <p>Torta de cookie recheada com chocolate meio amargo ou Nutella.</p>
+        <dl class="menu"><div class="linha"><dt>Inteira <span class="nota">2,5 kg</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 220</dd></div></dl>
+        <a class="botao" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Torta%20Cookie." target="_blank" rel="noopener">Encomendar a Torta Cookie</a>
+      </div>
+    </div>
+    <div class="grega" aria-hidden="true"></div>
+  </section>
+
+  <section class="secao" id="panelinhas" aria-labelledby="t-panelinhas">
+    <div class="envelope">
+      <div class="secao-cab">
+        <div>
+          <p class="sobre">11 sabores · 2 tamanhos</p>
+          <h2 id="t-panelinhas">As <em>panelinhas</em></h2>
+        </div>
+        <p>Cookie e brigadeiro servidos na própria panela, para dividir à mesa. A pequena, de 800 g, serve de 3 a 5 pessoas; a grande, de 1,2 a 1,3 kg, serve de 6 a 7.</p>
+      </div>
+      <div class="grade">
+        <article class="item">
+          <figure><img src="img/lotus-cookie.jpg" alt="Panelinha Lótus e Cookie" width="1060" height="1100" loading="lazy"></figure>
+          <h3>Lótus e Cookie</h3>
+          <p class="desc">Brigadeiro de chocolate belga com pedaços de cookie de baunilha e bolacha Lótus.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6 a 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20L%C3%B3tus%20e%20Cookie." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/chocolate.jpg" alt="Panelinha Chocolate" width="1009" height="1100" loading="lazy"></figure>
+          <h3>Chocolate</h3>
+          <p class="desc">Cookie de baunilha com chocolate meio amargo.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3 a 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve em média 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Chocolate." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/oreo.jpg" alt="Panelinha Oreo" width="1035" height="1079" loading="lazy"></figure>
+          <h3>Oreo</h3>
+          <p class="desc">Brigadeiro de chocolate belga com pedaços de cookie de baunilha, moedas de chocolate branco, chocolate meio amargo e bolacha Oreo.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3 a 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Oreo." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/nutella.jpg" alt="Panelinha Nutella" width="1009" height="1100" loading="lazy"></figure>
+          <h3>Nutella</h3>
+          <p class="desc">Cookie de baunilha com chocolate meio amargo, recheado com Nutella.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3 a 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Nutella." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/meio-a-meio.jpg" alt="Panelinha Meio a Meio" width="1092" height="899" loading="lazy"></figure>
+          <h3>Meio a Meio</h3>
+          <p class="desc">Metade cookie de chocolate cacau black, metade cookie de baunilha, com gotas de chocolate ao leite, meio amargo e branco.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve em média 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 120</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve em média 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 149</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Meio%20a%20Meio." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/palha.jpg" alt="Panelinha Palha na Panela" width="1035" height="994" loading="lazy"></figure>
+          <h3>Palha na Panela</h3>
+          <p class="desc">Brigadeiro de chocolate belga e branco intercalados com bolacha e raspas de chocolate Callebaut branco e preto.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 4 a 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 110</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Palha%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/brigadeiro-panela.jpg" alt="Panelinha Brigadeiro na Panela" width="850" height="1100" loading="lazy"></figure>
+          <h3>Brigadeiro na Panela</h3>
+          <p class="desc">Brigadeiro de chocolate, Ninho ou branco, coberto de dragê.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 4 a 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 110</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6 a 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Brigadeiro%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/brigadeiro-cookies.jpg" alt="Panelinha Brigadeiro com Cookies" width="632" height="1100" loading="lazy"></figure>
+          <h3>Brigadeiro com Cookies</h3>
+          <p class="desc">Brigadeiro de chocolate belga ou branco na frigideira, com pedaços de cookie de baunilha e de chocolate.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g · 18 cm <span class="nota">serve 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 120</dd></div><div class="linha"><dt>1,3 kg · 22 cm <span class="nota">serve 6 a 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Brigadeiro%20com%20Cookies." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/lotus-biscoff.jpg" alt="Panelinha Lotus Biscoff" width="802" height="1100" loading="lazy"></figure>
+          <h3>Lotus Biscoff</h3>
+          <p class="desc">Brigadeiro de doce de leite intercalado com Lotus Biscoff, no estilo palha italiana.</p>
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 175</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Lotus%20Biscoff." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/cocada.jpg" alt="Panelinha Cocada na Panela" width="732" height="1100" loading="lazy"></figure>
+          <h3>Cocada na Panela</h3>
+          
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve cerca de 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 175</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Cocada%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+        <article class="item">
+          <figure><img src="img/pao-de-mel.jpg" alt="Panelinha Pão de Mel na Panela" width="1062" height="914" loading="lazy"></figure>
+          <h3>Pão de Mel na Panela</h3>
+          
+          <div class="item-pe">
+            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 175</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20P%C3%A3o%20de%20Mel%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao cookies-sec" id="cookies" aria-labelledby="t-cookies">
+    <div class="envelope">
+      <div class="secao-cab">
+        <div>
+          <p class="sobre">Individuais e para presentear</p>
+          <h2 id="t-cookies"><em>Cookies</em></h2>
+        </div>
+        <p>Do cookie tradicional ao cookão recheado em camadas, sob consulta e em vários tamanhos.</p>
+      </div>
+      <ul class="cookies">
+        <li class="cookie">
+          <img class="mini" src="img/cookie-tradicional.jpg" alt="Cookie Tradicional" width="219" height="332" loading="lazy">
+          <div class="cookie-texto">
+            <div class="linha cookie-linha"><h3>Cookie Tradicional</h3><span class="pontos" aria-hidden="true"></span><span class="preco">R$ 12</span></div>
+            <p>Baunilha com gotas de chocolate.</p>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Cookie%20Tradicional." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </li>
+        <li class="cookie">
+          <img class="mini" src="img/cookie-brownie.jpg" alt="Cookie Brownie" width="223" height="337" loading="lazy">
+          <div class="cookie-texto">
+            <div class="linha cookie-linha"><h3>Cookie Brownie</h3><span class="pontos" aria-hidden="true"></span><span class="preco">R$ 16</span></div>
+            <p>Recheios: brigadeiro de pistache, brigadeiro branco, brigadeiro de Ninho, chocolate belga ou doce de leite.</p>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Cookie%20Brownie." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </li>
+        <li class="cookie">
+          <img class="mini" src="img/mini-cookie-brownie.jpg" alt="Mini Cookie Brownie" width="220" height="333" loading="lazy">
+          <div class="cookie-texto">
+            <div class="linha cookie-linha"><h3>Mini Cookie Brownie</h3><span class="pontos" aria-hidden="true"></span><span class="preco">R$ 35</span></div>
+            <p>Caixa com 5 mini cookie brownies recheados.</p>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Mini%20Cookie%20Brownie." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </li>
+        <li class="cookie">
+          <img class="mini" src="img/tigelinha.jpg" alt="Tigelinha de Cookie" width="223" height="326" loading="lazy">
+          <div class="cookie-texto">
+            <div class="linha cookie-linha"><h3>Tigelinha de Cookie</h3><span class="pontos" aria-hidden="true"></span><span class="preco">R$ 37</span></div>
+            <p>Tigelinha de cookie de baunilha recheada com Nutella ou chocolate.</p>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Tigelinha%20de%20Cookie." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </li>
+        <li class="cookie">
+          <img class="mini" src="img/triple-match.jpg" alt="Triple Match" width="223" height="337" loading="lazy">
+          <div class="cookie-texto">
+            <div class="linha cookie-linha"><h3>Triple Match</h3><span class="pontos" aria-hidden="true"></span><span class="preco">R$ 38</span></div>
+            <p>Um de cada: cookie de baunilha com chocolate, cookie Nutella e Kinder cookie.</p>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Triple%20Match." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </li>
+        <li class="cookie">
+          <img class="mini" src="img/cookao.jpg" alt="Cookão" width="219" height="327" loading="lazy">
+          <div class="cookie-texto">
+            <div class="linha cookie-linha"><h3>Cookão</h3><span class="pontos" aria-hidden="true"></span><span class="preco">Sob consulta</span></div>
+            <p>Massa de cacau ou baunilha com até 2 recheios: brigadeiro de chocolate belga, pistache, Ninho, branco ou doce de leite. Vários tamanhos.</p>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Cook%C3%A3o." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="secao" id="brigadeiros" aria-labelledby="t-brig">
+    <div class="envelope">
+      <div class="secao-cab">
+        <div>
+          <p class="sobre">Caixas e festas</p>
+          <h2 id="t-brig"><em>Brigadeiros</em></h2>
+        </div>
+        <p>Cerca de 16 g cada, em caixas para presentear ou no cento para festas.</p>
+      </div>
+      <div class="brig">
+        <figure class="colagem">
+          <img class="grande" src="img/caixa-cookies.jpg" alt="Caixa de brigadeiros de chocolate belga com cookies" width="916" height="1100" loading="lazy">
+          <img class="pequena" src="img/caixa-brigadeiros.jpg" alt="Caixa de brigadeiros de pistache, branco e com granulado colorido" width="377" height="505" loading="lazy">
+        </figure>
+        <div class="blocos">
+          <div class="bloco">
+            <h3>Caixa de Brigadeiros</h3>
+            <p>Caixas de 12, 16 ou 20 unidades, com até 4 sabores.</p>
+            <ul class="sabores" aria-label="Sabores">
+              <li>Pistache</li><li>Branco</li><li>Ninho</li><li>Chocolate belga</li><li>Beijinho</li><li>Casadinho</li>
+            </ul>
+            <dl class="menu"><div class="linha"><dt>12, 16 ou 20 unidades</dt><span class="pontos" aria-hidden="true"></span><dd>Sob consulta</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Caixa%20de%20Brigadeiros." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+          <div class="bloco">
+            <h3>Brigadeiro de Chocolate Belga com Cookies</h3>
+            <dl class="menu"><div class="linha"><dt>Caixa com 16</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 120</dd></div><div class="linha"><dt>Caixa com 20</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Brigadeiro%20de%20Chocolate%20Belga%20com%20Cookies." target="_blank" rel="noopener">Encomendar</a>
+          </div>
+          <div class="bloco">
+            <h3>Para festas</h3>
+            <p>No cento, até 5 sabores, com no mínimo 20 unidades por sabor.</p>
+            <dl class="menu"><div class="linha"><dt>Unidade</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 4,20</dd></div><div class="linha"><dt>Cento</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 420</dd></div></dl>
+            <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Brigadeiros%20para%20festa%20%28cento%29." target="_blank" rel="noopener">Pedir orçamento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao sobremesa-sec" id="sobremesa" aria-labelledby="t-sobremesa">
+    <div class="envelope sobremesa">
+      <div>
+        <p class="sobre">Sobremesa por encomenda</p>
+        <h2 id="t-sobremesa">Torta Palha <em>Italiana</em></h2>
+        <p>Palha italiana com brigadeiro e pistache salpicado por cima. O brigadeiro pode ser branco, de chocolate ou de pistache.</p>
+        <dl class="menu"><div class="linha"><dt>Torta</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 220</dd></div></dl>
+        <p class="nota-pe">O orçamento final depende do número de pessoas ou fatias.</p>
+        <a class="botao" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Torta%20Palha%20Italiana." target="_blank" rel="noopener">Pedir orçamento</a>
+      </div>
+      <figure class="tortas">
+        <img class="inteira" src="img/torta-palha.jpg" alt="Torta palha italiana com pistache, com uma fatia cortada" width="632" height="429" loading="lazy">
+        <img class="fatia" src="img/torta-palha-fatia.jpg" alt="Detalhe do corte da torta palha italiana" width="556" height="367" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section class="secao" id="encomendar" aria-labelledby="t-enc">
+    <div class="envelope">
+      <div class="secao-cab">
+        <div>
+          <p class="sobre">Sob encomenda e pronta entrega</p>
+          <h2 id="t-enc">Como <em>encomendar</em></h2>
+        </div>
+        <p>Trabalhamos sob encomenda e também temos pronta entrega todos os dias.</p>
+      </div>
+      <ol class="passos">
+        <li><h3>Escolha no cardápio</h3><p>Panelinhas, cookies, brigadeiros ou a torta palha italiana.</p></li>
+        <li><h3>Chame no WhatsApp</h3><p>Combine sabores, tamanho, data e horário pelo (11) 91171-9705.</p></li>
+        <li><h3>Retire ou receba</h3><p>Retirada nos Jardins, ou entrega por motoboy de carro, para tudo chegar perfeito. A taxa varia conforme a região.</p></li>
+      </ol>
+      <div class="infos">
+        <div><h3>Frescor</h3><p>Tudo é preparado no mesmo dia, sem conservantes, e mantém a qualidade por até 48 horas. Depois disso, sabor e textura podem mudar.</p></div>
+        <div><h3>Prazos</h3><p>Até 300 doces, peça com pelo menos 48 horas de antecedência. Acima de 300, com 7 dias. Cancelamentos devem ser feitos com no mínimo 72 horas.</p></div>
+        <div><h3>Conservação</h3><p>Os brigadeiros duram até 4 dias fora da geladeira e até 6 refrigerados. Prefira guardá-los em local fresco e longe do sol, porque a geladeira pode alterar a textura.</p></div>
+      </div>
+      <div class="chamada">
+        <div>
+          <h3>Fale com a <em>Mari</em></h3>
+          <p>WhatsApp (11) 91171-9705</p>
+        </div>
+        <a class="botao" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Encomendar pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="grega" aria-hidden="true"></div>
+  <div class="envelope rodape-corpo">
+    <div class="rodape-inner">
+      <div class="rodape-col">
+        <span class="rotulo">Encomendas</span>
+        <a href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">WhatsApp (11) 91171-9705</a>
+        <span>Retirada nos Jardins, São Paulo</span>
+      </div>
+      <svg class="brasao" viewBox="0 0 220 290" role="img" aria-label="Mari Haddad Patisserie, São Paulo">
+          <ellipse cx="110" cy="145" rx="100" ry="135" class="b-traco"/>
+          <ellipse cx="110" cy="145" rx="91" ry="126" class="b-traco fino"/>
+          <path d="M110 4 l5 6 -5 6 -5 -6z M110 274 l5 6 -5 6 -5 -6z" class="b-ponto"/>
+          <text x="110" y="92" text-anchor="middle" class="b-sup">PATISSERIE</text>
+          <text x="110" y="165" text-anchor="middle" class="b-mh">MH</text>
+          <line x1="80" y1="186" x2="140" y2="186" class="b-traco fino"/>
+          <text x="110" y="208" text-anchor="middle" class="b-nome">MARI HADDAD</text>
+          <text x="110" y="226" text-anchor="middle" class="b-sup">SÃO PAULO</text>
+        </svg>
+      <div class="rodape-col dir">
+        <span class="rotulo">Siga</span>
+        <a href="https://www.instagram.com/marihaddadpatisserie/" target="_blank" rel="noopener">@marihaddadpatisserie</a>
+        <span>Pronta entrega todos os dias</span>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Mari Haddad Patisserie</p>
+  </div>
+  <div class="grega" aria-hidden="true"></div>
+</footer>
+
+<a class="botao flutuante" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Encomendar</a>
+
+</body>
+</html>
