@@ -294,7 +294,10 @@ h1 em { display: block; }
   .flutuante {
     display: inline-flex; position: fixed; z-index: 30; right: 16px; bottom: 16px;
     box-shadow: 0 10px 30px color-mix(in srgb, var(--cacau) 30%, transparent);
+    opacity: 0; transform: translateY(14px); pointer-events: none;
+    transition: opacity .3s ease, transform .3s ease;
   }
+  .flutuante.visivel { opacity: 1; transform: none; pointer-events: auto; }
   .hero, .destaque-inner, .brig, .sobremesa { grid-template-columns: 1fr; }
   .hero-foto { justify-self: center; max-width: 340px; margin-top: 1.5rem; }
   .hero-foto::before { transform: translate(-12px, -12px); }
@@ -315,6 +318,7 @@ h1 em { display: block; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .selo-anel { animation: none; }
+  .flutuante { transition: none; }
   .item figure img { transition: none; }
 }
 </style>
@@ -667,6 +671,18 @@ h1 em { display: block; }
 </footer>
 
 <a class="botao flutuante" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Encomendar</a>
+
+<script>
+(function () {
+  var botao = document.querySelector('.flutuante');
+  var topo = document.querySelector('.hero .acoes');
+  if (!botao) return;
+  if (!topo || !('IntersectionObserver' in window)) { botao.classList.add('visivel'); return; }
+  new IntersectionObserver(function (itens) {
+    botao.classList.toggle('visivel', !itens[0].isIntersecting);
+  }).observe(topo);
+})();
+</script>
 
 </body>
 </html>
