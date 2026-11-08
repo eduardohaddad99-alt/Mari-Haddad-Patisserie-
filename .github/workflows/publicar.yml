@@ -1,0 +1,13 @@
+name: Publicar no Cloudflare
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chamar o deploy hook do Cloudflare Pages
+        run: curl -fsS -X POST -d "" "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/1b6b947e-d12a-4c11-a543-a72d6b9c0408"
