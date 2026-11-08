@@ -163,18 +163,27 @@ h1 em { display: block; }
 .menu { margin: 0; display: grid; gap: 0.15rem; }
 .linha { display: flex; align-items: baseline; gap: 0.6rem; }
 .menu .linha { padding-block: 0.3rem; }
-.menu dt { font-weight: 400; }
-.nota { font-weight: 300; color: var(--suave); }
-.destaque .nota { color: inherit; }
+.rot { font-weight: 400; white-space: nowrap; }
+.nota { display: block; font-size: 0.85rem; color: var(--suave); margin: -0.15rem 0 0.35rem; }
+.destaque .nota { color: color-mix(in srgb, var(--papel) 70%, var(--cacau)); }
 .pontos { flex: 1; min-width: 1.5rem; border-bottom: 1px dotted var(--caramelo-tinta); transform: translateY(-0.3em); }
-.menu dd, .preco { margin: 0; font-weight: 400; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.valor, .preco { margin: 0; font-weight: 400; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
 
 /* Panelinhas */
-.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 3rem 2rem; }
-.item { display: flex; flex-direction: column; gap: 0.7rem; }
-.item figure { margin: 0 0 0.5rem; aspect-ratio: 1; background: var(--leite); overflow: hidden; }
-.item figure img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; transition: transform .7s ease; }
-.item:hover figure img { transform: scale(1.04); }
+.grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.6rem 1rem; }
+@media (min-width: 700px) { .grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3.2rem 2rem; } }
+@media (min-width: 1100px) { .grade { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3.4rem 2.2rem; } }
+.item { display: flex; flex-direction: column; gap: 0.6rem; }
+.moldura {
+  margin: 0 0 0.5rem; background: var(--leite);
+  padding: clamp(9px, 1.4vw, 14px);
+  border: 1px solid color-mix(in srgb, var(--caramelo) 75%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--caramelo) 45%, transparent);
+  outline-offset: calc(-1 * clamp(5px, 0.8vw, 8px));
+}
+.quadro { display: block; position: relative; aspect-ratio: 1; overflow: hidden; }
+.quadro img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; transition: transform .7s ease; }
+.item:hover .quadro img { transform: scale(1.04); }
 .desc { font-size: 0.97rem; color: var(--suave); }
 .item-pe { margin-top: auto; display: grid; gap: 1rem; padding-top: 0.4rem; }
 .pedir {
@@ -195,10 +204,15 @@ h1 em { display: block; }
 /* Brigadeiros */
 .brig { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
 .colagem { position: relative; padding-bottom: 18%; margin: 0; }
-.colagem .grande { width: 82%; aspect-ratio: 5 / 6; object-fit: cover; }
+.colagem .grande {
+  width: 82%; aspect-ratio: 5 / 6; object-fit: cover; background: var(--leite);
+  padding: 12px; border: 1px solid color-mix(in srgb, var(--caramelo) 75%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--caramelo) 45%, transparent); outline-offset: -7px;
+}
 .colagem .pequena {
   position: absolute; right: 0; bottom: 0; width: 42%; aspect-ratio: 3 / 4; object-fit: cover;
   border: 10px solid var(--papel);
+  outline: 1px solid color-mix(in srgb, var(--caramelo) 75%, transparent); outline-offset: -4px;
 }
 .blocos { display: grid; gap: 2.6rem; }
 .bloco { display: grid; gap: 0.8rem; padding-bottom: 2.6rem; border-bottom: 1px solid var(--linha); }
@@ -299,7 +313,10 @@ h1 em { display: block; }
   }
   .flutuante.visivel { opacity: 1; transform: none; pointer-events: auto; }
   .hero, .destaque-inner, .brig, .sobremesa { grid-template-columns: 1fr; }
-  .hero-foto { justify-self: center; max-width: 340px; margin-top: 1.5rem; }
+  .hero-foto { justify-self: center; max-width: 290px; margin-top: 1.5rem; }
+  .prato { max-width: 300px; }
+  .colagem { max-width: 360px; margin-inline: auto; }
+  .tortas { max-width: 380px; margin-inline: auto; }
   .hero-foto::before { transform: translate(-12px, -12px); }
   .selo { width: 104px; left: -8px; bottom: 32px; }
   .secao-cab { grid-template-columns: 1fr; }
@@ -310,6 +327,13 @@ h1 em { display: block; }
   .rodape-col, .rodape-col.dir { text-align: center; justify-items: center; }
   .rodape a, .rodape-col.dir a { justify-self: center; }
 }
+@media (max-width: 699px) {
+  .item h3 { font-size: 1.12rem; }
+  .item .desc { font-size: 0.8rem; line-height: 1.45; }
+  .item .menu { font-size: 0.86rem; }
+  .item .nota { font-size: 0.74rem; }
+  .item .pedir { font-size: 0.62rem; letter-spacing: 0.16em; }
+}
 @media (max-width: 420px) {
   .cookie { grid-template-columns: 76px 1fr; gap: 1rem; }
   .mini { width: 76px; border-radius: 38px 38px 0 0; }
@@ -319,7 +343,7 @@ h1 em { display: block; }
   html { scroll-behavior: auto; }
   .selo-anel { animation: none; }
   .flutuante { transition: none; }
-  .item figure img { transition: none; }
+  .quadro img { transition: none; }
 }
 </style>
 </head>
@@ -370,7 +394,7 @@ h1 em { display: block; }
         <p class="sobre">Best seller</p>
         <h2 id="t-best">Torta <em>Cookie</em></h2>
         <p>Torta de cookie recheada com chocolate meio amargo ou Nutella.</p>
-        <dl class="menu"><div class="linha"><dt>Inteira <span class="nota">2,5 kg</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 220</dd></div></dl>
+        <div class="menu"><div class="linha"><span class="rot">Inteira</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 220</span></div><span class="nota">2,5 kg</span></div>
         <a class="botao" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Torta%20Cookie." target="_blank" rel="noopener">Encomendar a Torta Cookie</a>
       </div>
     </div>
@@ -388,101 +412,101 @@ h1 em { display: block; }
       </div>
       <div class="grade">
         <article class="item">
-          <figure><img src="img/lotus-cookie.jpg" alt="Panelinha Lótus e Cookie" width="1060" height="1100" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/lotus-cookie.jpg" alt="Panelinha Lótus e Cookie" width="1060" height="1100" loading="lazy"></span></figure>
           <h3>Lótus e Cookie</h3>
           <p class="desc">Brigadeiro de chocolate belga com pedaços de cookie de baunilha e bolacha Lótus.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6 a 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 125</span></div><span class="nota">serve 3</span><div class="linha"><span class="rot">1,3 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 150</span></div><span class="nota">serve 6 a 7</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20L%C3%B3tus%20e%20Cookie." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/chocolate.jpg" alt="Panelinha Chocolate" width="1009" height="1100" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/chocolate.jpg" alt="Panelinha Chocolate" width="1009" height="1100" loading="lazy"></span></figure>
           <h3>Chocolate</h3>
           <p class="desc">Cookie de baunilha com chocolate meio amargo.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3 a 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve em média 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 125</span></div><span class="nota">serve 3 a 4</span><div class="linha"><span class="rot">1,3 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 140</span></div><span class="nota">serve em média 7</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Chocolate." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/oreo.jpg" alt="Panelinha Oreo" width="1035" height="1079" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/oreo.jpg" alt="Panelinha Oreo" width="1035" height="1079" loading="lazy"></span></figure>
           <h3>Oreo</h3>
           <p class="desc">Brigadeiro de chocolate belga com pedaços de cookie de baunilha, moedas de chocolate branco, chocolate meio amargo e bolacha Oreo.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3 a 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 125</span></div><span class="nota">serve 3 a 4</span><div class="linha"><span class="rot">1,3 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 150</span></div><span class="nota">serve 6</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Oreo." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/nutella.jpg" alt="Panelinha Nutella" width="1009" height="1100" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/nutella.jpg" alt="Panelinha Nutella" width="1009" height="1100" loading="lazy"></span></figure>
           <h3>Nutella</h3>
           <p class="desc">Cookie de baunilha com chocolate meio amargo, recheado com Nutella.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 3 a 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 125</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 125</span></div><span class="nota">serve 3 a 4</span><div class="linha"><span class="rot">1,3 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 150</span></div><span class="nota">serve 6</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Nutella." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/meio-a-meio.jpg" alt="Panelinha Meio a Meio" width="1092" height="899" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/meio-a-meio.jpg" alt="Panelinha Meio a Meio" width="1092" height="899" loading="lazy"></span></figure>
           <h3>Meio a Meio</h3>
           <p class="desc">Metade cookie de chocolate cacau black, metade cookie de baunilha, com gotas de chocolate ao leite, meio amargo e branco.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve em média 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 120</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve em média 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 149</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 120</span></div><span class="nota">serve em média 4</span><div class="linha"><span class="rot">1,2 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 149</span></div><span class="nota">serve em média 6</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Meio%20a%20Meio." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/palha.jpg" alt="Panelinha Palha na Panela" width="1035" height="994" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/palha.jpg" alt="Panelinha Palha na Panela" width="1035" height="994" loading="lazy"></span></figure>
           <h3>Palha na Panela</h3>
           <p class="desc">Brigadeiro de chocolate belga e branco intercalados com bolacha e raspas de chocolate Callebaut branco e preto.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 4 a 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 110</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 110</span></div><span class="nota">serve 4 a 5</span><div class="linha"><span class="rot">1,3 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 150</span></div><span class="nota">serve 7</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Palha%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/brigadeiro-panela.jpg" alt="Panelinha Brigadeiro na Panela" width="850" height="1100" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/brigadeiro-panela.jpg" alt="Panelinha Brigadeiro na Panela" width="850" height="1100" loading="lazy"></span></figure>
           <h3>Brigadeiro na Panela</h3>
           <p class="desc">Brigadeiro de chocolate, Ninho ou branco, coberto de dragê.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 4 a 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 110</dd></div><div class="linha"><dt>1,3 kg <span class="nota">serve 6 a 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 110</span></div><span class="nota">serve 4 a 5</span><div class="linha"><span class="rot">1,3 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 150</span></div><span class="nota">serve 6 a 7</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Brigadeiro%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/brigadeiro-cookies.jpg" alt="Panelinha Brigadeiro com Cookies" width="632" height="1100" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/brigadeiro-cookies.jpg" alt="Panelinha Brigadeiro com Cookies" width="632" height="1100" loading="lazy"></span></figure>
           <h3>Brigadeiro com Cookies</h3>
           <p class="desc">Brigadeiro de chocolate belga ou branco na frigideira, com pedaços de cookie de baunilha e de chocolate.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g · 18 cm <span class="nota">serve 4</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 120</dd></div><div class="linha"><dt>1,3 kg · 22 cm <span class="nota">serve 6 a 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 150</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g · 18 cm</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 120</span></div><span class="nota">serve 4</span><div class="linha"><span class="rot">1,3 kg · 22 cm</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 150</span></div><span class="nota">serve 6 a 7</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Brigadeiro%20com%20Cookies." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/lotus-biscoff.jpg" alt="Panelinha Lotus Biscoff" width="802" height="1100" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/lotus-biscoff.jpg" alt="Panelinha Lotus Biscoff" width="802" height="1100" loading="lazy"></span></figure>
           <h3>Lotus Biscoff</h3>
           <p class="desc">Brigadeiro de doce de leite intercalado com Lotus Biscoff, no estilo palha italiana.</p>
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve 7</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 175</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 140</span></div><span class="nota">serve 5</span><div class="linha"><span class="rot">1,2 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 175</span></div><span class="nota">serve 7</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Lotus%20Biscoff." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/cocada.jpg" alt="Panelinha Cocada na Panela" width="732" height="1100" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/cocada.jpg" alt="Panelinha Cocada na Panela" width="732" height="1100" loading="lazy"></span></figure>
           <h3>Cocada na Panela</h3>
           
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve cerca de 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 175</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 140</span></div><span class="nota">serve 5</span><div class="linha"><span class="rot">1,2 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 175</span></div><span class="nota">serve cerca de 6</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20Cocada%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
         <article class="item">
-          <figure><img src="img/pao-de-mel.jpg" alt="Panelinha Pão de Mel na Panela" width="1062" height="914" loading="lazy"></figure>
+          <figure class="moldura"><span class="quadro"><img src="img/pao-de-mel.jpg" alt="Panelinha Pão de Mel na Panela" width="1062" height="914" loading="lazy"></span></figure>
           <h3>Pão de Mel na Panela</h3>
           
           <div class="item-pe">
-            <dl class="menu"><div class="linha"><dt>800 g <span class="nota">serve 5</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div><div class="linha"><dt>1,2 kg <span class="nota">serve 6</span></dt><span class="pontos" aria-hidden="true"></span><dd>R$ 175</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">800 g</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 140</span></div><span class="nota">serve 5</span><div class="linha"><span class="rot">1,2 kg</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 175</span></div><span class="nota">serve 6</span></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Panelinha%20P%C3%A3o%20de%20Mel%20na%20Panela." target="_blank" rel="noopener">Encomendar</a>
           </div>
         </article>
@@ -573,18 +597,18 @@ h1 em { display: block; }
             <ul class="sabores" aria-label="Sabores">
               <li>Pistache</li><li>Branco</li><li>Ninho</li><li>Chocolate belga</li><li>Beijinho</li><li>Casadinho</li>
             </ul>
-            <dl class="menu"><div class="linha"><dt>12, 16 ou 20 unidades</dt><span class="pontos" aria-hidden="true"></span><dd>Sob consulta</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">12, 16 ou 20 unidades</span><span class="pontos" aria-hidden="true"></span><span class="valor">Sob consulta</span></div></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Caixa%20de%20Brigadeiros." target="_blank" rel="noopener">Encomendar</a>
           </div>
           <div class="bloco">
             <h3>Brigadeiro de Chocolate Belga com Cookies</h3>
-            <dl class="menu"><div class="linha"><dt>Caixa com 16</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 120</dd></div><div class="linha"><dt>Caixa com 20</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 140</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">Caixa com 16</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 120</span></div><div class="linha"><span class="rot">Caixa com 20</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 140</span></div></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Brigadeiro%20de%20Chocolate%20Belga%20com%20Cookies." target="_blank" rel="noopener">Encomendar</a>
           </div>
           <div class="bloco">
             <h3>Para festas</h3>
             <p>No cento, até 5 sabores, com no mínimo 20 unidades por sabor.</p>
-            <dl class="menu"><div class="linha"><dt>Unidade</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 4,20</dd></div><div class="linha"><dt>Cento</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 420</dd></div></dl>
+            <div class="menu"><div class="linha"><span class="rot">Unidade</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 4,20</span></div><div class="linha"><span class="rot">Cento</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 420</span></div></div>
             <a class="pedir" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Brigadeiros%20para%20festa%20%28cento%29." target="_blank" rel="noopener">Pedir orçamento</a>
           </div>
         </div>
@@ -598,7 +622,7 @@ h1 em { display: block; }
         <p class="sobre">Sobremesa por encomenda</p>
         <h2 id="t-sobremesa">Torta Palha <em>Italiana</em></h2>
         <p>Palha italiana com brigadeiro e pistache salpicado por cima. O brigadeiro pode ser branco, de chocolate ou de pistache.</p>
-        <dl class="menu"><div class="linha"><dt>Torta</dt><span class="pontos" aria-hidden="true"></span><dd>R$ 220</dd></div></dl>
+        <div class="menu"><div class="linha"><span class="rot">Torta</span><span class="pontos" aria-hidden="true"></span><span class="valor">R$ 220</span></div></div>
         <p class="nota-pe">O orçamento final depende do número de pessoas ou fatias.</p>
         <a class="botao" href="https://wa.me/5511911719705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20encomendar%3A%20Torta%20Palha%20Italiana." target="_blank" rel="noopener">Pedir orçamento</a>
       </div>
