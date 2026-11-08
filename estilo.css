@@ -73,6 +73,9 @@ p { margin: 0; }
   padding: 0.9rem 1.5rem; border-radius: 0; transition: background .3s ease, color .3s ease;
 }
 .botao:hover { background: var(--caramelo-tinta); }
+.botao.contorno { background: transparent; color: var(--cacau); border: 1px solid var(--cacau); }
+.botao.contorno:hover { background: var(--cacau); color: var(--papel); }
+.chamada-botoes { display: flex; flex-wrap: wrap; gap: 0.8rem; }
 .nav .botao { padding: 0.7rem 1.2rem; }
 .nav-movel { display: none; }
 .flutuante { display: none; }
