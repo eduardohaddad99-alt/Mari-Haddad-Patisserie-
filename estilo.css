@@ -246,12 +246,19 @@ h1 em { display: block; }
 .chamada h3 em { color: var(--caramelo-tinta); }
 .chamada p { color: var(--suave); margin-top: 0.4rem; font-variant-numeric: tabular-nums; }
 
-/* Friso de grega */
-.grega { position: relative; height: 30px; background: var(--cacau); }
-.grega::before {
-  content: ""; position: absolute; inset: 0; background: var(--caramelo);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='30' viewBox='0 0 24 30'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='square'%3E%3Cpath d='M0 2.5H24M0 27.5H24' stroke-width='1'/%3E%3Cpath d='M0 22H24M5 22V8H19V17H10V12H14' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") repeat-x center / 24px 30px;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='30' viewBox='0 0 24 30'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='square'%3E%3Cpath d='M0 2.5H24M0 27.5H24' stroke-width='1'/%3E%3Cpath d='M0 22H24M5 22V8H19V17H10V12H14' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") repeat-x center / 24px 30px;
+/* Borda festonada (como toldo de patisserie) e fio de pérolas */
+.destaque, .rodape { position: relative; }
+.destaque::before, .rodape::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -9px; height: 10px; z-index: 1; pointer-events: none;
+  background: radial-gradient(circle at 50% 100%, var(--cacau) 9.5px, transparent 10px) repeat-x center bottom / 20px 10px;
+}
+.destaque::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -9px; height: 10px; z-index: 1; pointer-events: none;
+  background: radial-gradient(circle at 50% 0, var(--cacau) 9.5px, transparent 10px) repeat-x center top / 20px 10px;
+}
+.perolas {
+  height: 30px; pointer-events: none;
+  background: radial-gradient(circle, color-mix(in srgb, var(--caramelo) 85%, var(--papel)) 1.5px, transparent 2px) repeat-x center / 14px 14px;
 }
 
 /* Rodapé */
