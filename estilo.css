@@ -2,7 +2,8 @@
   /* Cardápio de maison: logotipo centrado, hero em arco, intervalo escuro do best seller, preços com pontilhado de menu */
   --papel: #FAF4EE;
   --leite: #FFFDF9;
-  --rose: #F4E7E0;
+  --rose: #F5E1DC;
+  --rosa: #D7A29C;
   --cacau: #5A3A2C;
   --caramelo: #C6926B;
   --caramelo-tinta: #8A5534;
@@ -367,3 +368,14 @@ h1 em { display: block; }
 .chamada-pagina .chamada { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) { .rotulo-cat { transition: none; } }
 .flutuante { border: 1px solid var(--caramelo); }
+
+/* Rosa antigo nos detalhes */
+.secao-rose, .cookies-sec { background: var(--rose); }
+.perolas { background: radial-gradient(circle, var(--rosa) 1.6px, transparent 2.1px) repeat-x center / 14px 14px; }
+.hero-foto::before { border-color: var(--rosa); }
+.moldura { outline-color: var(--rosa); }
+.rotulo-cat { border-color: var(--rosa); background: color-mix(in srgb, var(--rose) 45%, var(--leite)); }
+.categoria:hover .rotulo-cat { border-color: var(--caramelo-tinta); background: var(--leite); }
+.prato { box-shadow: 0 0 0 16px var(--cacau), 0 0 0 17px var(--rosa); }
+.chamada { background: color-mix(in srgb, var(--rose) 55%, var(--leite)); border-color: var(--rosa); }
+.secao-cab { border-bottom-color: color-mix(in srgb, var(--rosa) 70%, transparent); }
