@@ -217,11 +217,16 @@ h1 em { display: block; }
 .sobremesa .pontos { border-color: var(--cacau); }
 .sobremesa .nota-pe { font-size: 0.9rem; margin-top: 0.8rem; }
 .sobremesa .botao { margin-top: 2rem; }
-.tortas { position: relative; margin: 0; }
+.tortas { display: grid; gap: 2rem; }
+.versao { margin: 0; display: grid; gap: 0.8rem; }
+.versao figcaption {
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; color: var(--cacau);
+}
 .tortas .inteira { width: 100%; mix-blend-mode: multiply; }
-.tortas .fatia {
-  width: 46%; position: absolute; left: 0; top: -12%; aspect-ratio: 3 / 2; object-fit: cover;
-  border: 10px solid var(--pistache);
+.tortas .choc {
+  width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--leite);
+  padding: 10px; border: 1px solid color-mix(in srgb, var(--caramelo) 75%, transparent);
+  outline: 1px solid var(--rosa); outline-offset: -6px;
 }
 
 /* Como encomendar */
