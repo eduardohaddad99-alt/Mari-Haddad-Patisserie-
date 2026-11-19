@@ -217,6 +217,10 @@ h1 em { display: block; }
 .sobremesa .pontos { border-color: var(--cacau); }
 .sobremesa .nota-pe { font-size: 0.9rem; margin-top: 0.8rem; }
 .sobremesa .botao { margin-top: 2rem; }
+.tortas-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.6rem 1rem; max-width: 860px; }
+@media (min-width: 700px) { .tortas-grade { gap: 3rem 2.5rem; } }
+.quadro img.pos-dir { object-position: 72% 50%; }
+.sobremesa-sec .nota { color: color-mix(in srgb, var(--cacau) 80%, var(--pistache)); }
 .tortas { display: grid; gap: 2rem; }
 .versao { margin: 0; display: grid; gap: 0.8rem; }
 .versao figcaption {
